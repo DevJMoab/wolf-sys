@@ -1,10 +1,12 @@
 import { Button } from '@/app/components/ui/Button'
 import { Plus } from 'lucide-react'
 import {ClientsTable} from '@/app/components/features/clients/ClientsTable'
+import Layout from '../components/layout/Layout'
 
 export default function ClientsPage() {
   return (
-    <div className="space-y-6">
+    <Layout>
+      <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Clientes</h1>
         <Button className="bg-amber-600 hover:bg-amber-700">
@@ -17,5 +19,7 @@ export default function ClientsPage() {
         <ClientsTable />
       </div>
     </div>
+    </Layout>
+    
   )
 }

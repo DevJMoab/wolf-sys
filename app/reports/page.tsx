@@ -1,8 +1,10 @@
 import ReportsDashboard from '@/app/components/features/reports/ReportsDashboard'
+import Layout from '../components/layout/Layout'
 
 export default function ReportsPage() {
   return (
-    <div className="space-y-6">
+    <Layout>
+      <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Relatórios</h1>
       </div>
@@ -11,5 +13,7 @@ export default function ReportsPage() {
         <ReportsDashboard />
       </div>
     </div>
+    </Layout>
+    
   )
 }

@@ -1,9 +1,11 @@
 import { Button } from '@/app/components/ui/Button'
 import { Plus } from 'lucide-react'
 import {BudgetTable} from '@/app/components/features/budget/BudgetTable'
+import Layout from '../components/layout/Layout'
 
 export default function BudgetsPage() {
   return (
+    <Layout>
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Orçamentos</h1>
@@ -17,5 +19,6 @@ export default function BudgetsPage() {
         <BudgetTable />
       </div>
     </div>
+    </Layout>
   )
 }

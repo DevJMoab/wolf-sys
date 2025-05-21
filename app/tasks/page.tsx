@@ -1,8 +1,10 @@
 import KanbanBoard from '@/app/components/features/tasks/KanbanBoard'
+import Layout from '../components/layout/Layout'
 
 export default function TasksPage() {
   return (
-    <div className="space-y-6">
+    <Layout>
+      <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Tarefas</h1>
       </div>
@@ -11,5 +13,7 @@ export default function TasksPage() {
         <KanbanBoard />
       </div>
     </div>
+    </Layout>
+    
   )
 }
