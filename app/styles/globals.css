@@ -61,3 +61,8 @@ body {
 .sidebar-transition {
   transition: all 0.3s ease-in-out;
 }
+
+.company-logo {
+  border-radius: 50%;
+  border: 2px solid #f59e0b; /* cor amarela do tema */
+}
