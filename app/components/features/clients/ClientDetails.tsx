@@ -1,17 +1,18 @@
-import { Card } from '@/app/components/ui/Card'
-import { Button } from '@/app/components/ui/Button'
-import { Edit, Plus } from 'lucide-react'
+import { Card } from "@/app/components/ui/Card";
+import { Button } from "@/app/components/ui/Button";
+import { Edit, Plus } from "lucide-react";
+import Link from "next/link";
 
 type ClientDetailsProps = {
   client: {
-    id: string
-    name: string
-    cpf: string
-    email: string
-    phone: string
+    id: string;
+    name: string;
+    cpf: string;
+    email: string;
+    phone: string;
     // ... outros campos do cliente
-  }
-}
+  };
+};
 
 export function ClientDetails({ client }: ClientDetailsProps) {
   return (
@@ -22,12 +23,18 @@ export function ClientDetails({ client }: ClientDetailsProps) {
             <div className="flex items-center">
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mr-4">
                 <span className="text-xl font-medium">
-                  {client.name.split(' ').map(n => n[0]).join('')}
+                  {client.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
                 </span>
               </div>
               <div>
                 <h2 className="text-xl font-bold">{client.name}</h2>
-                <p className="text-gray-500">Cliente desde {new Date('2023-01-15').toLocaleDateString('pt-BR')}</p>
+                <p className="text-gray-500">
+                  Cliente desde{" "}
+                  {new Date("2023-01-15").toLocaleDateString("pt-BR")}
+                </p>
               </div>
             </div>
             <Button variant="outline">
@@ -40,18 +47,32 @@ export function ClientDetails({ client }: ClientDetailsProps) {
             <div>
               <h3 className="font-medium mb-2">Informações Pessoais</h3>
               <div className="space-y-2">
-                <p><span className="text-gray-500">CPF:</span> {client.cpf}</p>
-                <p><span className="text-gray-500">Data Nasc.:</span> 15/05/1985</p>
-                <p><span className="text-gray-500">Sexo:</span> Masculino</p>
+                <p>
+                  <span className="text-gray-500">CPF:</span> {client.cpf}
+                </p>
+                <p>
+                  <span className="text-gray-500">Data Nasc.:</span> 15/05/1985
+                </p>
+                <p>
+                  <span className="text-gray-500">Sexo:</span> Masculino
+                </p>
               </div>
             </div>
 
             <div>
               <h3 className="font-medium mb-2">Contato</h3>
               <div className="space-y-2">
-                <p><span className="text-gray-500">E-mail:</span> {client.email}</p>
-                <p><span className="text-gray-500">Telefone:</span> {client.phone}</p>
-                <p><span className="text-gray-500">Celular:</span> (11) 99999-9999</p>
+                <p>
+                  <span className="text-gray-500">E-mail:</span> {client.email}
+                </p>
+                <p>
+                  <span className="text-gray-500">Telefone:</span>{" "}
+                  {client.phone}
+                </p>
+                <p>
+                  <span className="text-gray-500">Celular:</span> (11)
+                  99999-9999
+                </p>
               </div>
             </div>
           </div>
@@ -81,22 +102,37 @@ export function ClientDetails({ client }: ClientDetailsProps) {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kit</th>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  ID
+                </th>
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Data
+                </th>
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Kit
+                </th>
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Valor
+                </th>
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Status
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200">
               <tr>
                 <td className="px-4 py-2 whitespace-nowrap">
-                  <Link href="/budgets/1" className="text-amber-600 hover:text-amber-800">
+                  <Link
+                    href="/budgets/1"
+                    className="text-amber-600 hover:text-amber-800"
+                  >
                     #1
                   </Link>
                 </td>
                 <td className="px-4 py-2 whitespace-nowrap">05/10/2023</td>
-                <td className="px-4 py-2 whitespace-nowrap">Kit Solar Premium</td>
+                <td className="px-4 py-2 whitespace-nowrap">
+                  Kit Solar Premium
+                </td>
                 <td className="px-4 py-2 whitespace-nowrap">R$ 25.000,00</td>
                 <td className="px-4 py-2 whitespace-nowrap">
                   <span className="px-2 py-1 rounded-full bg-green-100 text-green-800 text-xs">
@@ -106,12 +142,17 @@ export function ClientDetails({ client }: ClientDetailsProps) {
               </tr>
               <tr>
                 <td className="px-4 py-2 whitespace-nowrap">
-                  <Link href="/budgets/2" className="text-amber-600 hover:text-amber-800">
+                  <Link
+                    href="/budgets/2"
+                    className="text-amber-600 hover:text-amber-800"
+                  >
                     #2
                   </Link>
                 </td>
                 <td className="px-4 py-2 whitespace-nowrap">15/09/2023</td>
-                <td className="px-4 py-2 whitespace-nowrap">Kit Solar Básico</td>
+                <td className="px-4 py-2 whitespace-nowrap">
+                  Kit Solar Básico
+                </td>
                 <td className="px-4 py-2 whitespace-nowrap">R$ 18.000,00</td>
                 <td className="px-4 py-2 whitespace-nowrap">
                   <span className="px-2 py-1 rounded-full bg-yellow-100 text-yellow-800 text-xs">
@@ -124,5 +165,5 @@ export function ClientDetails({ client }: ClientDetailsProps) {
         </div>
       </Card>
     </div>
-  )
+  );
 }

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useCompany } from "@/app/providers/CompanyProvider";
-import { Lock, User, Building } from "lucide-react";
+import { Lock, User } from "lucide-react";
 import { Button } from "@/app/components/ui/Button";
 import { Input } from "@/app/components/ui/Input";
 import { Select } from "@/app/components/ui/Select";

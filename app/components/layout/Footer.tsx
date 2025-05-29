@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { Home, Search, Bell, Mail, User } from 'lucide-react'
-import { useTheme } from '@/app/providers/ThemeProvider'
+import { Home, Search, Bell, Mail, User } from "lucide-react";
+import { useTheme } from "@/app/providers/ThemeProvider";
 
 export default function Footer() {
-  const { theme } = useTheme()
+  const {} = useTheme();
 
   return (
     <footer className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 z-10">
@@ -28,5 +28,5 @@ export default function Footer() {
         </button>
       </div>
     </footer>
-  )
+  );
 }

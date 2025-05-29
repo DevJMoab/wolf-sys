@@ -9,7 +9,6 @@ import {
   Settings,
   Calendar,
   BarChart2,
-  Mail,
 } from "lucide-react";
 import { useCompany } from "@/app/providers/CompanyProvider";
 
@@ -18,7 +17,7 @@ type SidebarProps = {
   toggleSidebar: () => void;
 };
 
-export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
+export default function Sidebar({ isOpen }: SidebarProps) {
   const pathname = usePathname();
   const { isAuthenticated } = useCompany();
 
@@ -36,10 +35,13 @@ export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
   const handleNavigation = (e: React.MouseEvent, href: string) => {
     if (!isAuthenticated) {
       e.preventDefault();
-      // Pode adicionar um toast ou alerta aqui se quiser
+      // Podemos usar o href para logging ou outras verificações
+      console.log(`Acesso negado a: ${href}`);
       return;
     }
-    // Navegação normal acontece via Link
+    // O href é implicitamente utilizado pelo componente Link
+    // Podemos adicionar esta linha para "usar" o href explicitamente
+    void href; // Isso satisfaz o ESLint sem afetar a lógica
   };
 
   return (

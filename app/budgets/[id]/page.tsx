@@ -1,17 +1,26 @@
-import { notFound } from 'next/navigation'
-import { BudgetDetails } from '@/app/components/features/budget/BudgetDetails'
+import { notFound } from "next/navigation";
+import { BudgetDetails } from "@/app/components/features/budget/BudgetDetails";
 
-export default function BudgetDetailsPage({ params }: { params: { id: string } }) {
-  // Simulação de busca de dados - substituir por chamada real à API
-  const budget = {
-    id: params.id,
-    clientName: "João Silva",
-    kit: "Kit Solar Premium",
-    // ... outros campos do orçamento
-  }
+// Interface para os dados do orçamento
+interface Budget {
+  id: string;
+  clientName: string;
+  kit: string;
+  // Adicione outros campos necessários
+}
+
+// Interface compatível com o Next.js App Router
+interface PageProps {
+  params: { id: string };
+  searchParams?: Record<string, string | string[] | undefined>;
+}
+
+export default async function BudgetDetailsPage({ params }: PageProps) {
+  // Busca de dados (simulada ou real)
+  const budget: Budget | null = await getBudgetData(params.id); // Substitua por sua função de fetch
 
   if (!budget) {
-    return notFound()
+    return notFound();
   }
 
   return (
@@ -27,8 +36,35 @@ export default function BudgetDetailsPage({ params }: { params: { id: string } }
           </button>
         </div>
       </div>
-      
+
       <BudgetDetails budget={budget} />
     </div>
-  )
+  );
+}
+
+// Função simulada de busca de dados (substitua pela sua implementação real)
+async function getBudgetData(id: string): Promise<Budget | null> {
+  // Exemplo com fetch:
+  // const res = await fetch(`/api/budgets/${id}`);
+  // return res.ok ? res.json() : null;
+
+  return {
+    id,
+    clientName: "João Silva",
+    kit: "Kit Solar Premium",
+  };
+}
+
+// Geração de metadados (opcional)
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  return {
+    title: `Orçamento #${params.id} | Wolf-Sys`,
+    description: `Detalhes do orçamento ${params.id}`,
+  };
+}
+
+// Geração de parâmetros estáticos (opcional)
+export async function generateStaticParams() {
+  // Retorne os IDs que deseja pré-renderizar
+  return [{ id: "1" }, { id: "2" }];
 }

@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { Bar } from 'react-chartjs-2'
+import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,7 +9,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js'
+  TooltipItem,
+} from "chart.js";
 
 ChartJS.register(
   CategoryScale,
@@ -18,33 +19,33 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-)
+);
 
 type BarChartProps = {
   data: {
-    name: string
-    value: number
-  }[]
-  title?: string
-  color?: string
-}
+    name: string;
+    value: number;
+  }[];
+  title?: string;
+  color?: string;
+};
 
-export function BarChart({ 
-  data, 
-  title = 'Vendas', 
-  color = '#F59E0B' 
+export function BarChart({
+  data,
+  title = "Vendas",
+  color = "#F59E0B",
 }: BarChartProps) {
   const chartData = {
-    labels: data.map(item => item.name),
+    labels: data.map((item) => item.name),
     datasets: [
       {
         label: title,
-        data: data.map(item => item.value),
+        data: data.map((item) => item.value),
         backgroundColor: color,
         borderRadius: 4,
       },
     ],
-  }
+  };
 
   const options = {
     responsive: true,
@@ -55,30 +56,32 @@ export function BarChart({
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => {
-            return `${context.dataset.label}: ${new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL'
-            }).format(context.raw)}`
-          }
-        }
-      }
+          label: (context: TooltipItem<"bar">) => {
+            return `${context.dataset.label}: ${new Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }).format(context.raw as number)}`;
+          },
+        },
+      },
     },
     scales: {
       y: {
         beginAtZero: true,
         ticks: {
-          callback: (value: any) => {
-            return new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL',
-              maximumFractionDigits: 0
-            }).format(value)
-          }
-        }
-      }
-    }
-  }
+          callback: (value: number | string) => {
+            const numericValue =
+              typeof value === "string" ? parseFloat(value) : value;
+            return new Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+              maximumFractionDigits: 0,
+            }).format(numericValue);
+          },
+        },
+      },
+    },
+  };
 
-  return <Bar options={options} data={chartData} />
+  return <Bar options={options} data={chartData} />;
 }
